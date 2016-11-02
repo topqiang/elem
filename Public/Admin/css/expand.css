@@ -1,0 +1,73 @@
+/********************************      样式扩展      ********************************/
+
+/*验证码输入框*/
+#login-wrapper #login-content input.code{
+    width:60px;
+    float: left;
+    margin-left: 18px;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+/*验证码文字label*/
+#code_label{
+    margin-top: 15px;
+}
+/*搜索框  及其中表单的样式*/
+#main-content .content-search{
+    padding: 10px 0 10px 30px;
+}
+#main-content .content-search .small-input{
+    width: 15% !important;
+}
+#main-content .content-search .search-input{
+    color:#cccccc;
+}
+/*添加表单的输入框前文字*/
+#main-content .tab-content .label{
+    font-size: 13px;
+    font-family: '宋体';
+    font-weight: bold;
+}
+/*添加表单的下拉框*/
+#main-content .tab-content select{
+    width: 15% !important;
+}
+#main-content #tab4 select{
+    width: 20% !important;
+}
+#main-content #tab3 table{
+    border-collapse:separate;
+}
+#main-content #tab2 table{
+    border-collapse:separate;
+}
+/*添加的表单*/
+#main-content .form{
+    margin-left: 20px;
+}
+/*属性可选值大文本框*/
+#main-content .tab-content form .textarea{
+    width: 50% !important;
+    height:100px;
+}
+/*开通商户表单样式*/
+#open-info .label{
+    font-size: 13px;
+    font-family: '宋体';
+    font-weight: bold;
+}
+#open-info .text-input{
+    width: 60% !important;
+}
+/*进入排行榜表单样式*/
+#chart-info .label{
+    font-size: 13px;
+    font-family: '宋体';
+    font-weight: bold;
+}
+
+.img{
+    border: 1px solid #cccccc;
+    padding: 5px;
+    margin-left: 10px;
+}

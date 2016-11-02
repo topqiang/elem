@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/invalid.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/expand.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#container').highcharts({
+                chart: {
+                    type: 'spline'
+                },
+                title: {
+                    text: '',
+                    x: -20 ,
+                    style: {
+                        color: '#1B3243',
+                        fontWeight: 'bold',
+                        fontSize: '25px'
+                    }
+                },
+                subtitle: {
+                    text: "{$date_flag}",
+                    x: -20,
+                    style: {
+                        color: '#136DB7',
+                        fontWeight: 'bold',
+                        fontSize:'18px'
+                    }
+                },
+                xAxis: {
+                    categories: [{$x_date}],
+                    labels: {
+                        align: 'center'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: '当月营业额(RMB) '
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    crosshairs: true,
+                    shared: true
+                },
+                plotOptions: {
+                    spline: {
+                        marker: {
+                            radius: 4,
+                            lineColor: '#666666',
+                            lineWidth: 1
+                        }
+                    },
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{$line}]
+            });
+        });
+    </script>
+</head>
+<body>
+<!--主页面-->
+<div id="main-content">
+    <div class="content-box">
+        <!--提示-->
+        <div class="notification success png_bg" style="display:none">
+            <div></div>
+        </div>
+        <div class="notification error png_bg n-error" style="display:none">
+            <div></div>
+        </div>
+        <!--头部切换-->
+        <div class="content-box-header">
+            <h3>营业金额统计图</h3>
+            <ul class="content-box-tabs">
+                <li><a href="#tab1" class="default-tab">营业统计</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <!--表格内容-->
+        <div class="content-box-content">
+            <!--内容表格 start-->
+            <div class="tab-content default-tab" id="tab1">
+                <table border="1">
+                    <!--标题 start-->
+                    <thead>
+                    <tr>
+                        <td>
+                            <form action="{:U('Index/main')}" method="post" class="form">
+                                查看历史统计：{$year_sel}　{$month_sel}　　　　　　　　　　　　　
+                                <span style="font-size:18px;color:#136DB7;font-weight:bold;margin-left: 350px">
+
+                                    当月营业总额：{$count}元
+                                </span>
+                            </form>
+                        </td>
+                    </tr>
+                    </thead>
+                    <!--标题 end-->
+                    <!--内容 start-->
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div id="container" style="min-width: 310px; height: 550px; margin: 0 auto"></div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                    <!--内容 end-->
+                    <!--表尾 start-->
+                    <tfoot>
+                    </tfoot>
+                    <!--表尾 end-->
+                </table>
+            </div>
+            <!--内容表格 end-->
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.month_sel').change(function(){
+            if(this.value!=0){
+                $('.form').submit();
+            }
+        });
+    });
+</script>
+</html>

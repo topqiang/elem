@@ -1,0 +1,1320 @@
+@charset "utf-8";
+body {
+  background: #f6f6f6;
+}
+.content {
+  background: #f6f6f6;
+  margin-bottom: 50px;
+}
+.textcen {
+  text-align: center;
+}
+.pore {
+  position: relative;
+}
+.poab {
+  position: absolute;
+}
+.bgz {
+  background: #f9d726;
+}
+.bgbtn {
+  background: #4ad67a !important;
+}
+.colz {
+  color: #f9d726;
+}
+.colp {
+  color: #ef6353;
+}
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
+.bol5 {
+  border-left: 5px solid #f9d726;
+}
+.bgza {
+  background: rgba(249, 215, 38, 0.8);
+}
+.bgb {
+  background: #fff !important;
+}
+.bgr {
+  background: #F5092C;
+}
+.bgf {
+  background: #f2f2f2;
+}
+.colb {
+  color: #FFFFFF !important;
+}
+.cole {
+  color: #767676;
+}
+.mat10 {
+  margin-top: 10px !important;
+}
+.texovh {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.disf {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+.colg {
+  color: #42bdcc;
+}
+.colr {
+  color: #F5092C !important;
+}
+.bgr {
+  background: #F5092C !important;
+}
+.disn {
+  display: none !important;
+}
+.ovhid {
+  overflow: hidden;
+}
+.textrig {
+  text-align: right;
+}
+.mar60 {
+  margin-right: 60px;
+}
+.borbtn {
+  color: #ef6353;
+  padding: 5px 20px;
+  border-radius: 4px;
+  border: 1px solid #ef6353;
+}
+.borbtnh {
+  color: #333;
+  padding: 5px 20px;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+.botarea {
+  height: 50px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+header {
+  height: 50px;
+  line-height: 50px;
+  position: fixed;
+  top: 0px;
+  z-index: 8;
+  width: 100%;
+  text-align: center;
+  background: #f9d726;
+}
+header span.local {
+  padding: 25px;
+  height: 50px;
+  line-height: 50px;
+  background: url('../img/msg.png') 10px center no-repeat;
+  background-size: 24px 24px;
+}
+header span.local.on {
+  height: 50px;
+  line-height: 50px;
+  background: url('../img/hasmsg.png') 10px center no-repeat;
+  background-size: 24px 24px;
+}
+header .sousuo {
+  width: 70%;
+  height: 30px;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 10px 15%;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.5);
+}
+.pfr {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+span.left {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 50px;
+  padding-left: 36px;
+  background: url('../img/left.png') 13px center no-repeat transparent;
+  background-size: 10px 20px;
+}
+span.left.hei {
+  color: #000000;
+  text-align: center;
+  background: url('../img/lefth.png') 13px center no-repeat transparent;
+  background-size: 15px 20px;
+}
+.label {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+footer {
+  background: #fff;
+  height: 60px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+  border-top: 1px solid #D8D8D8;
+}
+footer > div {
+  width: 50%;
+  padding-top: 40px;
+}
+footer > div.on {
+  color: #f9d726;
+}
+footer > div:nth-child(1) {
+  background: url('../img/fter2.png') center 10px no-repeat transparent;
+  background-size: auto 30px;
+}
+footer > div:nth-child(1).on {
+  background: url('../img/fter2on.png') center 10px no-repeat transparent;
+  background-size: auto 30px;
+}
+footer > div:nth-child(2) {
+  background: url('../img/fter3.png') center 10px no-repeat transparent;
+  background-size: auto 30px;
+}
+footer > div:nth-child(2).on {
+  background: url('../img/fter3on.png') center 10px no-repeat transparent;
+  background-size: auto 30px;
+}
+footer > div span {
+  font-size: 10px;
+  display: block;
+  text-align: center;
+}
+.zhao {
+  position: fixed;
+  z-index: 9;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.zhcon {
+  bottom: 50px;
+  background: #fff !important;
+  width: 100%;
+  font-size: 14px;
+}
+.zhcon .gootitle {
+  padding: 10px;
+  background: #f6f6f6;
+}
+.alrelist {
+  background: #fff !important;
+  padding: 10px 0px;
+}
+.alrelist li {
+  border-bottom: 1px solid #E1E1E1;
+  padding: 10px 10px;
+}
+.alrelist li:last-child {
+  border-bottom: 0px;
+}
+.alrelist li > div .playgley {
+  margin-top: 0px;
+}
+.gley {
+  height: 50px;
+  line-height: 50px;
+  position: fixed;
+  bottom: 0px;
+  z-index: 10;
+  width: 100%;
+  color: #dadada;
+  padding-left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+}
+.gley .gleybtn {
+  display: none;
+}
+.gley.on .nomsg {
+  display: none;
+}
+.gley.on .gleycon font {
+  color: #FFFFFF !important;
+}
+.gley.on .gleybtn {
+  display: block;
+  float: right;
+  color: #FFFFFF !important;
+  text-align: center;
+  padding: 0px 25px;
+  background: #4ad67a;
+}
+.gley.on .icongley {
+  background: url('../img/gleyon.png') 0px center no-repeat transparent;
+  background-size: 50px 50px;
+}
+.gley.on .subnum {
+  top: 12px;
+  left: 32px;
+  width: 12px;
+  height: 12px;
+  line-height: 12px;
+  background: #F5092C;
+  background: #F5092C !important;
+  color: #FFFFFF !important;
+  font-size: 6px;
+  text-align: center;
+  border-radius: 5px;
+}
+.icongley {
+  padding: 25px 30px;
+  background: url('../img/gley.png') 0px center no-repeat transparent;
+  background-size: 50px 50px;
+}
+.smbtn {
+  padding: 2px 5px;
+  color: #fff;
+  background: #f9d726;
+  border-radius: 5px;
+}
+.leftitle {
+  display: inline-block;
+  width: 100px;
+}
+.lmbtn {
+  padding: 5px 20px;
+  color: #FFFFFF !important;
+  background: #f9d726;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.bge {
+  background: #E1E1E1 !important;
+}
+.bgea {
+  background: rgba(225, 225, 225, 0.5);
+}
+.gleycon {
+  height: 50px;
+  line-height: 50px;
+  position: absolute;
+  left: 20px;
+  top: 0px;
+  right: 0px;
+  color: #767676;
+}
+.gleycon font {
+  font-size: 18px;
+}
+.blinput input {
+  background: transparent;
+  width: 100%;
+  margin-top: 50%;
+  height: 20px;
+  margin-top: 10px;
+}
+.iconuser {
+  height: 40px;
+  padding-left: 50px;
+  background: url('../img/username.png') 10px center no-repeat #f3f3f3;
+  background-size: 20px 20px;
+}
+.iconcode {
+  height: 40px;
+  width: 50%;
+  padding-left: 50px;
+  background: url('../img/codeh.png') 10px center no-repeat #f3f3f3;
+  background-size: 20px 20px;
+}
+.iconsou {
+  padding: 25px 15px;
+  background: url('../img/iconsou.png') 0px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconpwd {
+  height: 40px;
+  padding-left: 50px;
+  background: url('../img/password.png') 10px center no-repeat #f3f3f3;
+  background-size: 20px 20px;
+}
+.icongley {
+  background: url('../img/gley.png') 0px center no-repeat transparent;
+  background-size: 50px 50px;
+}
+.iconjian {
+  background: url('../img/jiannum.png') center center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconzan {
+  padding-left: 25px;
+  background: url('../img/zan.png') 0px center no-repeat transparent;
+  background-size: 16px 16px;
+}
+.iconunzan {
+  padding-left: 25px;
+  background: url('../img/unzan.png') 0px center no-repeat transparent;
+  background-size: 16px 16px;
+}
+.iconsousuo {
+  padding-left: 30px;
+  background: url('../img/sousuo.png') 0px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconpche {
+  padding-left: 30px;
+  background: url('../img/pche.png') left center no-repeat transparent;
+  background-size: 30px 30px;
+}
+.iconsanj {
+  background: url('../img/sanj.png') right center no-repeat transparent;
+  background-size: 10px 10px;
+}
+.iconsanj.on {
+  color: #ef6353;
+  background: url('../img/sanjon.png') right center no-repeat transparent;
+  background-size: 10px 10px;
+}
+.iconjs {
+  background: url('../img/js.png') right center no-repeat transparent;
+  background-size: 10px 10px;
+}
+.iconjx {
+  background: url('../img/jx.png') right center no-repeat transparent;
+  background-size: 10px 10px;
+}
+.iconjw {
+  background: url('../img/js.png') right center no-repeat transparent;
+  background-size: 10px 10px;
+}
+.iconadd {
+  background: url('../img/add.png') center center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.phone {
+  background: url('../img/phone.png') 10px center no-repeat transparent;
+  background-size: 25px 30px;
+}
+.code {
+  background: url('../img/code.png') 10px center no-repeat transparent;
+  background-size: 25px 30px;
+}
+.iconkefu {
+  padding-left: 35px;
+  background: url('../img/kefu.png') 0px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.iconemail {
+  background: url('../img/email.png') 10px center no-repeat transparent;
+  background-size: 25px 30px;
+}
+.iconsys {
+  padding: 30px 10px 30px 100px;
+  background: url('../img/iconsys.png') 20px center no-repeat transparent;
+  background-size: 80px 80px;
+}
+.iconord {
+  padding: 30px 10px 30px 100px;
+  background: url('../img/iconord.png') 20px center no-repeat transparent;
+  background-size: 80px 80px;
+}
+.iconys {
+  background: url('../img/ys.png') 10px center no-repeat transparent;
+  background-size: 25px 30px;
+}
+.unlock {
+  background: url('../img/unlock.png') 10px center no-repeat transparent;
+  background-size: 25px 30px;
+}
+.iconcoupon {
+  background: url('../img/coupon.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.iconmoney {
+  background: url('../img/money.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.icontix {
+  background: url('../img/tix.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.iconchz {
+  background: url('../img/chz.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.iconrac {
+  background: url('../img/checkracon.png') 0px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconrac.on {
+  background: url('../img/checkrac.png') 0px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconaddre {
+  background: url('../img/addre.png') 10px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconaddr {
+  padding-left: 35px;
+  background: url('../img/address.png') 10px center no-repeat transparent;
+  background-size: 15px 15px;
+}
+.icontel {
+  background: url('../img/tel.png') 10px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.icontelr {
+  display: inline-block;
+  padding-right: 15px;
+  background: url('../img/tel.png') right center no-repeat transparent;
+  background-size: 15px 15px;
+}
+.iconedi {
+  background: url('../img/edit.png') 10px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.icondel {
+  background: url('../img/del.png') 10px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconwifi {
+  background: url('../img/wifi.png') 0px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconsann {
+  background: url('../img/sann.png') 0px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconpadd {
+  background: url('../img/padd.png') 0px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconcuif {
+  background: url('../img/cuif.png') 0px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconaddress {
+  background: url('../img/address.png') 0px center no-repeat transparent;
+  background-size: 15px 15px;
+}
+.iconwx {
+  background: url('../img/wx.png') 0px center no-repeat transparent;
+  background-size: auto 30px;
+}
+.iconzfb {
+  background: url('../img/zfb.png') 0px center no-repeat transparent;
+  background-size: auto 30px;
+}
+.iconye {
+  background: url('../img/ye.png') 0px center no-repeat transparent;
+  background-size: auto 30px;
+}
+.iconset {
+  background: url('../img/set.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.iconjifen {
+  background: url('../img/jifen.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.iconzuan {
+  background: url('../img/zuan.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.iconbank {
+  background: url('../img/bank.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.iconrate {
+  background: url('../img/rate.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.iconfwg {
+  padding-left: 36px;
+  background: url('../img/fwg.png') 10px center no-repeat transparent;
+  background-size: 16px 16px;
+}
+.iconkeep {
+  background: url('../img/keep.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.iconzaoc {
+  background: url('../img/zaoc.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.icontonc {
+  background: url('../img/tonc.png') 10px center no-repeat transparent;
+  background-size: 25px 25px;
+}
+.right {
+  padding: 25px 15px;
+  background: url('../img/right.png') 0px center no-repeat transparent;
+  background-size: 10px 20px;
+}
+.rightb {
+  padding: 40px 15px;
+  background: url('../img/rightb.png') 0px center no-repeat transparent;
+  background-size: 10px 15px;
+}
+.iconcancel {
+  padding: 5px 10px 5px 30px;
+  top: 0px;
+  right: 0px;
+  background: url('../img/cancel.png') 10px center no-repeat #e1e1e1;
+  background-size: 10px 10px;
+}
+.iconlu {
+  background: url('../img/iconlu.png') 0px center no-repeat transparent;
+  background-size: 8px 8px;
+}
+.iconoinfo {
+  padding-left: 50px;
+  background: url('../img/oinfo.png') 15px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconotime {
+  padding-left: 50px;
+  background: url('../img/otime.png') 15px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconclose {
+  padding: 10px;
+  top: -10px;
+  right: -10px;
+  background: url('../img/close.png') center center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.iconmsg {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 10px;
+  background: url('../img/msg.png') 0px 0px no-repeat transparent;
+  background-size: 20px 20px;
+}
+.check {
+  background: url('../img/check.png') 20px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.check.on {
+  background: url('../img/checkon.png') 20px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.getcode {
+  margin-top: 10px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0px 10px;
+  float: right;
+  color: #FFFFFF !important;
+  text-align: center;
+  background: #f9d726;
+  border-radius: 4px;
+}
+.big-btn {
+  margin-top: 50px;
+  font-size: 18px;
+  width: 90%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #FFFFFF !important;
+  margin-left: 5%;
+  border-radius: 4px;
+}
+.line {
+  padding: 0px 5px;
+  margin-top: 20px;
+  background: #fff !important;
+}
+.line input {
+  width: auto;
+}
+.line > div {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #d8d8d8;
+  padding-left: 40px;
+}
+.line > div:last-child {
+  border-bottom: 0px;
+}
+.shopline {
+  font-size: 12px;
+  margin-top: 10px;
+  background: #fff !important;
+}
+.shopline > div {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 2px dotted #d8d8d8;
+  padding-left: 40px;
+}
+.shopline > div:last-child {
+  border-bottom: 0px;
+}
+.orderline {
+  margin-top: 10px;
+  background: #fff !important;
+}
+.orderline > div {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #d8d8d8;
+  padding-left: 20px;
+}
+.orderline > div:last-child {
+  border-bottom: 0px;
+}
+.lined {
+  padding: 0px 20px;
+  margin-top: 0px;
+  background: #fff !important;
+}
+.lined > div {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 2px dotted #d8d8d8;
+  padding-left: 20px;
+}
+.lined > div:last-child {
+  border-bottom: 0px;
+}
+.formline {
+  margin-top: 0px;
+  background: #fff !important;
+}
+.formline > div {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #d8d8d8;
+  padding-left: 10px;
+}
+.formline > div:last-child {
+  border-bottom: 0px;
+}
+.lines {
+  padding: 0px 20px;
+  margin-top: 0px;
+  background: #fff !important;
+}
+.lines > div {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #d8d8d8;
+  padding-left: 0px;
+}
+.lines > div:last-child {
+  border-bottom: 0px;
+}
+.line0d {
+  padding: 0px 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background: #fff !important;
+}
+.line0d > div {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 2px dotted #d8d8d8;
+  padding-left: 0px;
+}
+.line0d > div:last-child {
+  border-bottom: 0px;
+}
+.labtitle {
+  height: 50px;
+  line-height: 50px;
+  margin-left: 20px;
+}
+.focus1 {
+  background: rgba(0, 0, 0, 0) !important;
+}
+.focus1 > div {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.focus1 span {
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.focus1 span.current {
+  background: #fff !important;
+}
+.xqnav {
+  padding-bottom: 10px;
+  color: #666666;
+  font-size: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+  background: #fff !important;
+}
+.xqnav > div {
+  width: 25%;
+  margin-top: 10px;
+}
+.xqnav > div img {
+  width: 60%;
+  margin-left: 20%;
+}
+.xqnav > div span {
+  display: block;
+  text-align: center;
+}
+.ad {
+  height: 100px;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  background: #fff !important;
+}
+.ad > div {
+  display: inline-block;
+  margin-left: 20px;
+  position: relative;
+  height: 80px;
+  line-height: 80px;
+  width: 80px;
+}
+.ad > div img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 4px;
+  height: 100%;
+  width: 100%;
+}
+.ad > div span {
+  color: #FFFFFF !important;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 80px;
+  font-size: 12px;
+  text-align: center;
+}
+.goods {
+  background: #fff !important;
+  border-top: 1px solid #e6e6e6;
+  padding-left: 10px;
+}
+.good {
+  padding: 10px 0px;
+  height: 120px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.good.stop {
+  opacity: 0.5;
+}
+.imgbag {
+  float: left;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+.imgbag img {
+  height: 100%;
+  width: 100%;
+}
+.imgbag span {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  text-align: center;
+  padding: 3px 12px;
+  border-radius: 10px;
+  font-size: 10px;
+  background: rgba(249, 215, 38, 0.8);
+  color: #FFFFFF !important;
+}
+.goodinfo {
+  line-height: 33px;
+  font-size: 10px;
+}
+.goodinfo.zaocan {
+  height: 25px;
+  line-height: 25px;
+}
+.goodinfo.zaocan .descrip {
+  height: 25px;
+  padding-right: 20px;
+  line-height: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.goodinfo.zaocan .level img {
+  margin-top: 0px;
+}
+.goodinfo .goodname {
+  font-size: 16px;
+}
+.goodinfo .level img {
+  margin-top: 11px;
+  width: 15px;
+}
+.goodinfo .sales {
+  font-size: 12px;
+  float: right;
+  color: #767676;
+  margin-right: 20px;
+}
+.goodinfo .payinfo > span {
+  padding: 5px 15px;
+}
+.cheord {
+  padding: 10px 0px;
+  margin-top: 50px;
+  background: #fff !important;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+.shopbar {
+  height: 40px;
+  line-height: 40px;
+  background: #fff !important;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+  text-align: center;
+}
+.shopbar div.on {
+  color: #F5092C !important;
+  border-bottom: 2px solid #F5092C;
+}
+.tab {
+  overflow: hidden;
+}
+.classify {
+  float: left;
+  width: 25%;
+  background: #f8f8f8;
+}
+.classify div {
+  font-size: 12px;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #dadada;
+}
+.classify div.on {
+  background: #fff !important;
+}
+.conmain {
+  float: right;
+  width: 75%;
+}
+.conmain > div {
+  padding: 0px 10px;
+}
+.conmain .contitle {
+  height: 30px;
+  line-height: 30px;
+}
+.conmain .warelist {
+  background: #fff !important;
+}
+.selftop {
+  background-size: 100% 100%;
+}
+.selftop .selftext {
+  padding-top: 80px;
+}
+.selftop .selftext img {
+  width: 80px;
+  border-radius: 50%;
+}
+.selftop .selftext span {
+  color: #FFFFFF !important;
+  display: block;
+  text-align: center;
+}
+.xingout {
+  padding: 10px;
+  margin-right: 10px;
+  background: url('../img/xingout.png') center center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.xingout.on {
+  background: url('../img/xing.png') center center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.ratecon {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  background: #f2f2f2;
+  margin-bottom: 20px;
+}
+.pstime {
+  padding-left: 10px;
+  border-radius: 10px;
+  height: 50px;
+  line-height: 50px;
+  background: #f2f2f2;
+}
+.selpstime {
+  opacity: 0;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
+}
+.paybg {
+  height: 100px;
+  background: url('../img/paybg.png') 0px 0px no-repeat transparent;
+  background-size: 100% 100px;
+}
+.noinshop {
+  margin-left: 0px;
+  padding: 10px;
+}
+.togley {
+  padding: 25px 25px;
+}
+.playgley {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #000000;
+  width: 90px;
+  margin-top: 15px;
+}
+.playgley span {
+  width: 20px;
+}
+.playadd {
+  overflow: hidden;
+}
+.playadd span {
+  padding-left: 40px;
+}
+.manna {
+  padding: 10px 0px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.manna .sname {
+  font-size: 24px;
+}
+.manna .level img {
+  width: 15px;
+}
+.manna .otime {
+  font-size: 12px;
+}
+.levelt img {
+  margin-top: 5px;
+  width: 15px;
+}
+.ordaddress {
+  background: #fff !important;
+  border-top-width: 0px;
+  height: 80px;
+  border-image: url('../img/borimg.png') 15 repeat;
+}
+.newadd {
+  padding-left: 90px;
+  height: 120px;
+  line-height: 120px;
+  background: url('../img/newadd.png') 25px center no-repeat transparent;
+  background-size: 50px auto;
+}
+.ediadd {
+  padding: 10px 40px 10px 60px;
+  height: 80px;
+  line-height: 30px;
+  background: url('../img/addre.png') 25px center no-repeat transparent;
+  background-size: 20px auto;
+}
+.ediadd > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.addAdd {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+.address {
+  background: #fff !important;
+  margin-bottom: 10px;
+}
+.address > div {
+  padding: 0px 20px;
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.address .playadd {
+  border-top: 1px solid #E1E1E1;
+}
+.address .playadd span {
+  padding-left: 40px;
+}
+.paymoney {
+  padding: 25px;
+  line-height: 25px;
+  text-align: center;
+  height: 100px;
+  background: url('../img/paybg.png') 0px 0px no-repeat transparent;
+  background-size: 100% 100px;
+}
+.paytype {
+  padding-left: 20px;
+}
+.paytype > div .iconcheck {
+  padding: 25px 15px;
+  background: url('../img/checkracon.png') 0px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.paytype > div.on .iconcheck {
+  background: url('../img/checkrac.png') 0px center no-repeat transparent;
+  background-size: 20px 20px;
+}
+.hotel {
+  height: 80px;
+  background: #fff !important;
+}
+.hotel .hotellevel {
+  float: right;
+  width: 80px;
+  height: 60px;
+  margin-top: 10px;
+  border-left: 1px solid #D8D8D8;
+  background: url('../img/addtel.png') center center no-repeat transparent;
+  background-size: 30px 30px;
+}
+.hotelinfo {
+  padding: 10px 0px 10px 20px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.hotelinfo div {
+  max-height: 60px;
+}
+.intime {
+  background: url('../img/vline.png') center center no-repeat #ffffff;
+  background-size: 1px 35px;
+  padding: 12px 0px;
+  text-align: center;
+  line-height: 30px;
+}
+.intime > div {
+  width: 50%;
+}
+.houstype {
+  background: #fff !important;
+  margin-bottom: 10px;
+  padding: 0px 20px;
+}
+.houstype > div {
+  height: 50px;
+  line-height: 50px;
+}
+.houslist {
+  border-bottom: 1px solid #D8D8D8;
+}
+.houslist li {
+  border-top: 1px solid #D8D8D8;
+  padding: 5px 0px;
+}
+.houslist li div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 5px 0px;
+}
+.housargs {
+  font-size: 12px;
+}
+.housargs span:nth-child(2) {
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 1px solid #D8D8D8;
+}
+.order > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.order .oname {
+  height: 40px;
+  line-height: 40px;
+}
+.order .oinfo {
+  background: #fafafa;
+  padding: 10px 10px;
+}
+.order .oinfo img {
+  width: 60px;
+  height: 60px;
+}
+.order .ginfo {
+  line-height: 30px;
+  padding-left: 70px;
+}
+.order .btnarea {
+  height: 50px;
+}
+.image img {
+  width: 100px;
+  height: 100px;
+}
+.grate {
+  height: auto !important;
+  line-height: 20px !important;
+  padding: 10px 0px;
+}
+.grate .imgtool img {
+  width: 20px;
+  height: 20px;
+}
+.grate .imgad {
+  padding: 10px 0px;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.grate .imgad img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.getfootime {
+  height: 80px;
+  padding: 20px 20px 20px 65px;
+  line-height: 40px;
+  background: url('../img/gettime.png') 25px center no-repeat #ffffff;
+  background-size: 20px auto;
+}
+.getfootime .rcontent {
+  text-align: right;
+  line-height: 20px;
+}
+.unum {
+  top: 12px;
+  left: 83px;
+  background: #FF4444;
+  border-radius: 50%;
+  width: 14px;
+}
+.hotkey {
+  width: 100%;
+}
+.hotkey li {
+  overflow: hidden;
+  border-top: 1px solid #D2D2D2;
+  width: 100%;
+}
+.hotkey li span {
+  height: 40px;
+  line-height: 40px;
+  float: left;
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+}
+.hotkey li span:nth-child(2) {
+  border-left: 1px solid #D2D2D2;
+  border-right: 1px solid #D2D2D2;
+}
+.jftopimg img {
+  width: 100%;
+}
+.jfgood {
+  width: 32%;
+  float: left;
+}
+.jfgood img {
+  width: 100%;
+}
+.jfgood:nth-child(2) {
+  margin: 0px 2%;
+}
+.jfgoods {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: wrap;
+}
+.jfgoods > div {
+  width: 50%;
+}
+.jfgoods > div .jfimgbag {
+  padding-right: 50px;
+}
+.jfgoods > div .jfimgbag img {
+  width: 100%;
+}
+.jfgoods > div:nth-child(2n+1) {
+  border-right: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0;
+}
+.jfgoods > div:nth-child(2n) {
+  border-bottom: 1px solid #E0E0E0;
+}
+.jfbtn {
+  bottom: 5px;
+  right: 5px;
+}
+.smallimg img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.ratebag .gimg {
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+}
+.ratebag .gimg img {
+  width: 100%;
+  height: 100%;
+}
+.ratebag textarea {
+  height: 60px;
+}
+.upimg div {
+  float: left;
+  width: 20%;
+  margin-right: 5%;
+  margin-bottom: 10px;
+}
+.upimg div img {
+  width: 100%;
+}

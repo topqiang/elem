@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="http://tg.txunda.com/Public/Admin/css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://tg.txunda.com/Public/Admin/css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://tg.txunda.com/Public/Admin/css/invalid.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://tg.txunda.com/Public/Admin/css/expand.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="http://tg.txunda.com/Public/Admin/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="http://tg.txunda.com/Public/Admin/js/facebox.js"></script>
+    <script type="text/javascript" src="http://tg.txunda.com/Public/Admin/js/jquery.wysiwyg.js"></script>
+    <script type="text/javascript" src="http://tg.txunda.com/Public/Admin/js/trivial.jquery.js"></script>
+    <script type="text/javascript" src="http://tg.txunda.com/Public/Admin/js/simpla.jquery.configuration.js"></script>
+    <script type="text/javascript" src="http://tg.txunda.com/Public/Admin/js/ajax_operate.js"></script>
+</head>
+<body>
+<!--主页面-->
+<div id="main-content">
+    <div class="content-box">
+        <!--提示-->
+        <div class="notification success png_bg" style="display:none">
+            <div></div>
+        </div>
+        <div class="notification error png_bg n-error" style="display:none">
+            <div></div>
+        </div>
+        <!--头部切换-->
+        <div class="content-box-header">
+            <h3>编辑图文回复</h3>
+            <ul class="content-box-tabs">
+                <li><a href="#tab1" class="default-tab">编辑</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <!--表格内容-->
+        <div class="content-box-content">
+            <!--表单 start-->
+            <div class="tab-content default-tab" id="tab1">
+                <form action="{:U('WeiXinArticle/editPicTextBack')}" method="post" class="form" enctype="multipart/form-data">
+                    <input type="hidden" name="wxa_id" value="{$pic_text_back['wxa_id']}">
+                    <fieldset>
+                        <p>
+                            <span class="label">关键词：　　　</span>
+                            <input class="text-input medium-input datepicker" type="text" name="wxa_keywords" value="{$pic_text_back['wxa_keywords']}"/>*<br>
+                            　　　　　　　　<span style="color:#EC5B4D">多个关键词用空格隔开</span>
+                        </p>
+                        <p>
+                            <span class="label">关键词类型：　</span>
+                            <input type="radio" name="wxa_keywords_type" value="1" <if condition="$pic_text_back['wxa_keywords_type'] eq 1">checked</if>/>完全匹配
+                            <input type="radio" name="wxa_keywords_type" value="0" <if condition="$pic_text_back['wxa_keywords_type'] eq 0">checked</if>/>包含匹配
+                        </p>
+                        <p>
+                            <span class="label">标题：　　　　</span>
+                            <input class="text-input medium-input datepicker" type="text" name="wxa_title" value="{$pic_text_back['wxa_title']}"/>*
+                        </p>
+                        <p>
+                            <span class="label">简介：　　　　</span>
+                            <textarea class="text-input textarea" name="wxa_description">{$pic_text_back['wxa_description']}</textarea>*
+                        </p>
+                        <p>
+                            <span class="label">图片上传：　　</span>
+                            <input class="text-input small-input" type="file" name="wxa_pic" /><br>
+                            　　　　　　　　<span style="color:#EC5B4D">图片上传和图片地址只能存储一个，图片上传的优先级高。大图360*200 小图200*200</span>
+                        </p>
+                        <p>
+                            <span class="label">图片地址：　　</span>
+                            <input class="text-input medium-input datepicker" type="text" name="wxa_picurl" value="{$pic_text_back['wxa_picurl']}"/><br>
+                            　　　　　　　　<span style="color:#EC5B4D">可以将图片上传到腾讯微博、QQ空间等再获取外链</span>
+                        </p>
+                        <p>
+                            <span class="label">图片外链网址：</span>
+                            <input class="text-input medium-input datepicker" type="text" name="wxa_url" value="{$pic_text_back['wxa_url']}"/><br>
+                            　　　　　　　　<span style="color:#EC5B4D">如需跳转到其他网址，请在这里填写网址(例如：http://baidu.com，记住必须有http://)</span>
+                        </p>
+                        <p>
+                            <span class="label">排序：　　　　</span>
+                            <input class="text-input medium-input datepicker" type="text" name="wxa_sort" value="{$pic_text_back['wxa_sort']}"/><br>
+                            　　　　　　　　<span style="color:#EC5B4D">数值越大越靠前</span>
+                        </p>
+                        <p>
+                            <input class="button edit-btn" type="submit" value="保　存" />
+                        </p>
+                    </fieldset>
+                    <div class="clear"></div>
+                </form>
+            </div>
+            <!--表单 end-->
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    });
+</script>
+</html>

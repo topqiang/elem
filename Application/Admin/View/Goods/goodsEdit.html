@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>后台管理系统</title>
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/invalid.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main-content">
+	<div class="content-box">
+		<!--头部切换-->
+		<div class="content-box-header">
+			<h3>编辑商品</h3>
+			<div class="clear"></div>
+		</div>
+		<div class="content-box-content">
+			<div class="tab-content default-tab">
+				<form action="{:U('Goods/goodsEdit',array('id'=>$id))}" method="post" enctype="multipart/form-data">
+					<fieldset>
+						<p>
+							<label>商品名称(ID:{$info.gid})</label>
+							<input value="{$info.gname}" class="text-input small-input" type="text" id="small-input" name="name" />
+						</p>
+						<p>
+							<label>主要成分</label>
+							<input class="text-input small-input" type="text" id="small-input" name="constituent" value="{$info.gconstituent}" />
+						</p>
+						<p>
+							<label>分类</label>
+							<select name="cate_id">
+								<volist name="cate_list" id="vo">
+									<if condition="$vo['id'] eq $info['gcate_id']">
+										<option value="{$vo.id}" selected="selected">{$vo.name}</option>
+										<else/>
+										<option value="{$vo.id}">{$vo.name}</option>
+									</if>
+								</volist>
+							</select>
+						</p>
+						<p>
+							<label>现价</label>
+							<input value="{$info.gprice}" class="text-input small-input" type="text" id="small-input" name="price" />
+						</p>
+						<p>
+							<label>商品图</label>
+							<img src="__WEBROOT__/{$info.gpic}" width="100" height="100"/>
+							<input type="file" name="pic"/>
+						</p>
+						<p>
+							<label>点赞</label>
+							<input value="{$info.zannum}" class="text-input small-input" type="number" id="small-input" name="zannum" />
+						</p>
+						<p>
+							<label>厌恶</label>
+							<input value="{$info.unzannum}" class="text-input small-input" type="number" id="small-input" name="unzannum" />
+						</p>
+						<p>
+							<label>备注描述</label>
+							<input class="text-input small-input" type="text" id="small-input" name="remark" value="{$info.gremark}" />
+						</p>
+						<p>
+							<input class="button" type="submit" value="保存" />
+						</p>
+					</fieldset>
+					<div class="clear"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function ajax(){
+		var filesize = this.files[0].size;
+		if (filesize > 500*1024) {
+			alert("请上传大小在500k以下的图片");
+			return false;
+		};
+		var self = $(this);
+		var files = this.files;
+		var reader = new FileReader();
+		reader.onload = function(e){
+			var src = e.target.result;
+			self.prev().attr("src",src);
+		}
+		reader.readAsDataURL(files[0]);
+	}
+	$("input[type='file']").on('change',ajax);
+</script>
+</body>
+</html>

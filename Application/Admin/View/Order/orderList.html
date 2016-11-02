@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>后台管理系统</title>
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/invalid.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main-content">
+	<div class="content-box">
+		<!--头部切换-->
+		<div class="content-box-header">
+			<h3>订单列表</h3>
+			<!-- <ul class="content-box-tabs">
+                <li><a href="{:U('Order/orderList',array('type'=>'2'))}" <eq name="tab_type" value="4">class="default-tab"</eq>>今日未完成订单</a></li>
+                <li><a href="{:U('Order/orderList')}" <eq name="tab_type" value="1">class="default-tab"</eq>>未完成订单</a></li>
+                <li><a href="{:U('Order/oldList',array('type'=>'1'))}" <eq name="tab_type" value="3">class="default-tab"</eq>>今日已完成</a></li>
+                <li><a href="{:U('Order/oldList')}" <eq name="tab_type" value="2">class="default-tab"</eq>>已完成订单</a></li>
+			</ul> -->
+			<div class="clear"></div>
+		</div>
+
+		<div class="content-search" style="height: 40px;margin: 10px 0 0 10px;">
+			<form action="{:U('Order/orderlist')}" method="post">
+				订单号：<input type="text" name="ordname" class="text-input" value="{$_REQUEST['ordname']}">
+				订单人姓名：<input type="text" name="addname" class="text-input" value="{$_REQUEST['addname']}">
+				订单人电话：<input type="text" name="tel" class="text-input" value="{$_REQUEST['tel']}">
+				订单状态：
+				<select name="type">
+					<option value="" <if condition="empty($_REQUEST)">selected</if>>不限</option>
+					<option value="1" <if condition="$_REQUEST['type'] eq 1">selected</if>>待发货</option>
+					<option value="2" <if condition="$_REQUEST['type'] eq 2">selected</if>>待收货</option>
+					<option value="3" <if condition="$_REQUEST['type'] eq 3">selected</if>>已完成</option>
+					<option value="4" <if condition="$_REQUEST['type'] eq 4">selected</if>>已评价</option>
+				</select>
+				<input type="submit" class="button search-btn" value="查询">
+			</form>
+		</div>
+		
+		<!--表格内容-->
+		<div class="content-box-content">
+			<div class="tab-content default-tab" id="tab1">
+				<form action="{:U('AdminBasic/delList',array('tname'=>''))}" method="post">
+					<table border="1">
+						<!--标题-->
+						<thead>
+						<tr>
+							<th width="5%">订单号</th>
+							<th width="5%">姓名</th>
+							<th width="8%">电话</th>
+							<th width="17%">地址</th>
+							<th width="6%">付款方式</th>
+							<th width="5%">状态</th>
+							<th width="5%">总价</th>
+							<th width="6%">配送方式</th>
+							<th width="18%">预约时间</th>
+							<th width="10%">备注</th>
+							<th width="15%">操作</th>
+						</tr>
+						</thead>
+						<!--内容-->
+						<tbody>
+						<if condition="empty($orders)">
+							<tr><td colspan="11">没有符合条件的结果</td></tr>
+						</if>
+						<volist name="orders" id="order">
+							<tr>
+								<td>{$order.ordname}</td>
+								<td>{$order.addname}</td>
+								<td>{$order.tel}</td>
+								<td>{$order.detailadd}</td>
+                                <td>
+                                	<if condition="$order['paytype'] eq 1">微信支付
+                                	<elseif condition="$order['paytype'] eq 0"/>货到付款
+                                	</if>
+                                </td>
+                                 <td>
+                                	<if condition="$order['type'] eq 0"><font style="color:red">待付款</font>
+										<elseif condition="$order['type'] eq 1" /><font style="color:#ff37bf">待发货</font>
+										<elseif condition="$order['type'] eq 2" /><font style="color:blue">待收货</font>
+										<elseif condition="$order['type'] eq 3" /><font style="color:green">已完成</font>
+										<else/>已评价
+									</if>
+                                </td>
+                                 <td>
+                                	￥{$order.paymoney}
+                                </td>
+								<td>
+									<if condition="$order['delivertype'] eq 1">送货上门
+                                		<elseif condition="$order['delivertype'] eq 0"/>到店自提
+                                	</if>
+								</td>
+								<td>{$order.delidate}</td>
+								<td>{$order.remark}</td>
+								<td class="playorder">
+									<if condition="$order['type'] eq 1">
+										<a oid="{$order.oid}" type="2" title="发货" class="button ">发货</a>
+									<elseif condition="($order['type'] eq 2) AND ($order['delivertype'] eq 0)"/>
+										<a oid="{$order.oid}" type="3" title="发货" class="button">提货</a>
+										<elseif condition="$order['type'] eq 0"/>
+										<a oid="{$order.oid}" type="9" title="取消" class="button">取消</a>
+									</if>
+                                    <a oid="{$order.oid}" title="详情" class="button getinfo">详情</a>
+								</td>
+							</tr>
+						</volist>
+						<!--表尾-->
+						</tbody>
+						<tfoot>
+						<tr>
+							<td colspan="20">
+								<div class="pagination">
+									{$page}
+								</div>
+								<div class="clear"></div>
+							</td>
+						</tr>
+						</tfoot>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="goodslist" style="padding:10px;display:none">
+</div>
+</body>
+<script type="text/javascript" src="__WEBPUBLIC__/Admin/js/layer/layer.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".playorder a[type]").on("click",function(){
+			var self = $(this);
+			var id = self.attr("oid");
+			var type = self.attr("type");
+			var order = {"id" :id ,"type" :type};
+			if (type == 3) {
+				var getcode = prompt("提货码","请输入提货码");
+				order.getcode = $.trim(getcode);
+			};
+			if (type == 9) {
+				var flag = confirm("您确认要取消该订单吗？取消后将不能恢复！");
+				if (!flag) {
+					return;
+				};
+			};
+			$.ajax({
+				"url" : "{:U('Order/updorder')}",
+				"type" : "post",
+				"data" : {"order" :order},
+				"dataType" : "json",
+				"success" : function(data){
+					console.log(data);
+					if (data != "error") {
+						location.reload();
+					}
+				}
+			})
+		});
+
+		$(".getinfo").on( 'click' ,function(){
+			var self = $(this);
+			var oid = self.attr('oid');
+			$.ajax({
+				url : "{:U('Order/getinfo')}",
+				data : {"oid" : oid},
+				type : "post",
+				dataType : "json",
+				success : function(goods){
+					if (goods != "error") {
+						var jsonlist = JSON.parse(goods);
+						var goods = $(".goodslist").html("");
+						var str = '<tr><th>名称</th><th>数量</th><th>价格</th><th>详情</th><th>备注</th></tr>';
+						var length = jsonlist.length;
+						for(var i = 0 ; i < length ; i++){
+							var good = jsonlist[i];
+							str += '<tr><td>'+good.name+'</td><td>'+good.gnum+'</td><td>'+good.gprice+'</td><td>'+good.constituent+'</td><td>'+good.remark+'</td></tr>';
+						}
+						$("<table/>").html(str).appendTo(goods);
+						layer.open({
+							"title" : false,
+							"type" : 1,
+							"area" : ['400px','auto'],
+							"content": goods
+						});
+					}else{
+						alert("查询失败！");
+					}
+				}
+			});
+
+		});
+	});
+</script>
+</html>

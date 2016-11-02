@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>后台管理系统</title>
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/invalid.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main-content">
+	<div class="content-box">
+		<!--头部切换-->
+		<div class="content-box-header">
+			<h3>编辑门店</h3>
+			<div class="clear"></div>
+		</div>
+		<div class="content-box-content">
+			<div class="tab-content default-tab">
+				<form action="{:U('Shop/shopedit')}" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="id" value="{$info.id}" />
+					<fieldset>
+						<p>
+							<label>门店名称(ID:{$info.id})</label>
+						</p>
+						<p>
+							<label>商家名称</label>
+							<input class="text-input small-input" type="text" name="title" value="{$info.title}" />
+						</p>
+						<p>
+							<label>老板名</label>
+							<input class="text-input small-input" type="text" name="boss" value="{$info.boss}"/>
+						</p>
+						<p>
+							<label>后台登录名</label>
+							<input class="text-input small-input" type="text" name="username" value="{$info.username}"/>
+						</p>
+						<p>
+							<label>密码</label>
+							<input class="text-input small-input" type="text" name="password"/>
+						</p>
+						<p>
+							<label>电话</label>
+							<input class="text-input small-input" type="text" name="tel" value="{$info.tel}"/>
+						</p>
+						<p>
+							<label>商家logo</label>
+							<input type="file" name="pic"/>
+						</p>
+						<div id="l-map"></div>
+						<p>
+							<label>地址</label>
+							<input class="text-input small-input" type="text" id="suggestId" name="address" value="{$info.address}"/>
+						</p>
+						<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+						<p>
+							<label>店铺押金</label>
+							<input class="text-input small-input" type="text" name="money" value="{$info.money}"/>
+						</p>
+						<p>
+							<label>银行账号</label>
+							<input class="text-input small-input" type="text" name="banknum" value="{$info.banknum}"/>
+						</p>
+						<p>
+							<label>开户行</label>
+							<input class="text-input small-input" type="text" name="bankname" value="{$info.bankname}"/>
+						</p>
+						<p>
+							<input class="button" type="submit" value="保存" />
+						</p>
+					</fieldset>
+					<div class="clear"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=gZedg9GnM3hGi68Z3YubDIyx57oU4GTf"></script>
+	<script type="text/javascript">
+	function getBaidu(){
+		// 百度地图API功能
+		function G(id) {
+			return document.getElementById(id);
+		}
+
+		var map = new BMap.Map("l-map");
+		map.centerAndZoom("{$city}",12);                   // 初始化地图,设置城市和地图级别。
+
+		var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+			{"input" : "suggestId"
+			,"location" : map
+		});
+
+		ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+		var str = "";
+			var _value = e.fromitem.value;
+			var value = "";
+			if (e.fromitem.index > -1) {
+				value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+			}    
+			str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+			
+			value = "";
+			if (e.toitem.index > -1) {
+				_value = e.toitem.value;
+				value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+			}    
+			str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+			G("searchResultPanel").innerHTML = str;
+		});
+
+		var myValue;
+		ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+		var _value = e.item.value;
+			myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+			G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+			// setPlace();
+		});
+
+		function setPlace(){
+			map.clearOverlays();    //清除地图上所有覆盖物
+			function myFun(){
+				var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+				map.centerAndZoom(pp, 18);
+				map.addOverlay(new BMap.Marker(pp));    //添加标注
+			}
+			var local = new BMap.LocalSearch(map, { //智能搜索
+			  onSearchComplete: myFun
+			});
+			local.search(myValue);
+		}
+	}
+	$("#suggestId").on("click",getBaidu());	
+	</script>
+</body>
+</html>

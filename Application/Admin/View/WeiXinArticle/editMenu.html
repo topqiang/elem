@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/invalid.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/expand.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/facebox.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery.wysiwyg.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/trivial.jquery.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/simpla.jquery.configuration.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/ajax_operate.js"></script>
+</head>
+<body>
+<!--主页面-->
+<div id="main-content">
+    <div class="content-box">
+        <!--提示-->
+        <div class="notification success png_bg" style="display:none">
+            <div></div>
+        </div>
+        <div class="notification error png_bg n-error" style="display:none">
+            <div></div>
+        </div>
+        <!--头部切换-->
+        <div class="content-box-header">
+            <h3>编辑菜单</h3>
+            <ul class="content-box-tabs">
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <!--表格内容-->
+        <div class="content-box-content">
+            <!--表单 start-->
+            <div class="tab-content default-tab" id="tab1">
+                <form action="{:U('WeiXinArticle/editMenu')}" method="post" class="form">
+                    <input type="hidden" name="id" value="{$menu_info['id']}">
+                    <fieldset>
+                        <p>
+                            <span class="label">父级菜单：　　</span>
+                            <select name="parent_id">
+                                <option value="0">一级菜单</option>
+                                <volist name="sel_menu_list" id="menu">
+                                    <option value="{$menu['id']}" <if condition="$menu_info['parent_id'] eq $menu['id']">selected='true'</if>>{$menu['name']}</option>
+                                </volist>
+                            </select>
+                        </p>
+                        <p>
+                            <span class="label">菜单名称：　　</span>
+                            <input class="text-input medium-input datepicker" type="text" name="name" value="{$menu_info['name']}"/><br>
+                        </p>
+                        <p>
+                            <span class="label">关联关键词：　</span>
+                            <input class="text-input medium-input datepicker" type="text" name="keywords" value="{$menu_info['keywords']}"/><br>
+                            　　　　　　　　<span style="color:#EC5B4D">关联关键词和外链URL选填一项，外链URL的优先级高</span>
+                        </p>
+                        <p>
+                            <span class="label">外链URL：&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <input class="text-input medium-input datepicker" type="text" name="url" value="{$menu_info['url']}"/><br>
+                            <span style="color:#EC5B4D">　　　　　　　　请在这里填写网址(例如：http://baidu.com，记住必须有http://)</span>
+                        </p>
+                        <p>
+                            <span class="label">排序：　　　　</span>
+                            <input class="text-input medium-input datepicker" type="text" name="sort" value="{$menu_info['sort']}"/><br>
+                            　　　　　　　　<span style="color:#EC5B4D">数值越大越靠前</span>
+                        </p>
+                        <p>
+                            <input class="button edit-btn" type="submit" value="保　存" />
+                        </p>
+                    </fieldset>
+                    <div class="clear"></div>
+                </form>
+            </div>
+            <!--表单 end-->
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    });
+</script>
+</html>

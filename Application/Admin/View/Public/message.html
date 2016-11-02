@@ -1,0 +1,79 @@
+<div id="messages" style="display: none;">
+	<div class="send" style="display:none;">
+		<h3>发送信息（收件人：<span class="sender_name">asfd</span>）</h3>
+	</div>
+	<div class="info" style="display:none;">
+		<h3 style="border-bottom: solid 1px #DDDDDD;">查看信息（发件人：<span class="sender_name"></span>----<span class="ctime"></span>）</h3>
+		<h4>标题：<span class="mes_title"></span></h4>
+		<h4>内容：</h4>
+		<span class="mes_content"></span>
+		<h3 style="border-top: solid 1px #DDDDDD;padding-top: 10px;margin-top: 10px;">回复信息</h3>
+	</div>
+	<form action="{:U('Message/sendMes')}" method="post" class="sendMes_form">
+		<h4>标题</h4>
+		<input type="text" name="addressee" style="display:none;" class="addressee"/>
+		<input type="text" class="text-input medium-input re_title" name="title"/>
+		<h4>内容</h4>
+		<fieldset>
+			<textarea class="textarea re_content" name="content" cols="79" rows="5"></textarea>
+		</fieldset>
+		<fieldset>
+			<input class="button sendMes_submit" type="button" value="发送" onclick="sendMes_submit();"/>
+		</fieldset>
+	</form>
+</div>
+
+
+<script type="text/javascript">
+	function msgInfo(msg_id){
+		$('.info').css('display','block');
+		$('.send').css('display','none');
+		$.ajax({
+			url:'{:U("Message/mesInfo")}',
+			type:'get',
+			data:{msg_id:msg_id},
+			success:function(data){
+				if(data.flag=='error'){
+					messageInfo('error',data.message);
+				}else{
+					$('.sender_name').text(data.sender_name);
+					$('.ctime').text(data.ctime);
+					$('.mes_title').text(data.title);
+					$('.mes_content').text(data.content);
+
+					$('.addressee').attr('value',data.sender);
+					$('.re_title').val('回复：'+data.title.replace(new RegExp(/(回复：)/g),''));
+				}
+			}
+		});
+	}
+
+	function sendMes(id,name){
+		$('.send').css('display','block');
+		$('.info').css('display','none');
+		$('.sender_name').text(name);
+
+		$('.addressee').attr('value',id);
+	}
+	
+	function sendMes_submit(){
+		$.ajax({
+			url:'{:U("Message/sendMes")}',
+			type:'post',
+			data:$('.sendMes_form').serialize(),
+			success:function(data){
+				if(data!='success'){
+					messageInfo('error',data);
+				}else{
+					messageInfo('success','发送成功');
+					$('.close').click();
+				}
+			}
+		});
+	}
+	
+	$(document).ready(function(){
+		$('a[rel*=modal]').facebox();
+	});
+
+</script>

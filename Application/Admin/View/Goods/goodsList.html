@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>后台管理系统</title>
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/invalid.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main-content">
+	<div class="content-box">
+		<!--头部切换-->
+		<div class="content-box-header">
+			<h3>商品列表</h3>
+			<ul class="content-box-tabs">
+				<li><a href="{:U('Goods/goodsList')}" class="default-tab current">商品列表</a></li>
+				<li><a href="{:U('Goods/goodsAdd')}">添加商品</a></li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+
+		<div class="content-search" style="height: 40px;margin: 10px 0 0 10px;">
+			<form action="{:U('Goods/goodsList')}" method="post">
+				商品ID：<input type="text" name="fid" class="text-input">
+				商品名称：<input type="text" name="name" class="text-input">
+				商品分类：
+				<select name="cate_id">
+					<option value="99">不限</option>
+					<volist name="cate_list" id="vo">
+						<option value="{$vo.id}">{$vo.name}</option>
+					</volist>
+				</select>
+				<input type="submit" class="button search-btn" value="查询">
+			</form>
+		</div>
+		
+		<!--表格内容-->
+		<div class="content-box-content">
+			<div class="tab-content default-tab" id="tab1">
+				<form action="{:U('AdminBasic/delList',array('tname'=>'Goods'))}" method="post">
+					<table border="1">
+						<!--标题-->
+						<thead>
+						<tr>
+							<th width="5%">
+								<input class="check-all" type="checkbox" />
+								ID
+							</th>
+							<th width="10%">商品名称</th>
+							<th width="10%">分类</th>
+							<td width="10%">主要成分</td>
+							<th width="10%">缩略图</th>
+							<th width="10%">生成时间</th>
+							<th width="10%">修改时间</th>
+							<th width="10%">现价</th>
+							<th width="10%">备注</th>
+                            <th width="5%">状态</th>
+							<th width="10%">操作</th>
+						</tr>
+						</thead>
+						<!--内容-->
+						<tbody>
+						<if condition="empty($list)">
+							<tr><td colspan="10">没有符合条件的结果</td></tr>
+						</if>
+						<volist name="list" id="vo">
+							<tr>
+								<td>
+									<input type="checkbox" name="id[]" value="{$vo['gid']}"/>
+									{$vo.gid}
+								</td>
+								<td>
+									{$vo.gname}
+								</td>
+								<td>{$vo.cname}</td>
+								<td>{$vo.gconstituent}</td>
+								<td><img src="__WEBROOT__/{$vo.gpic}" height="30" /></td>
+								<td>{$vo.gcreate_time|date="y-m-d H:m:i",###}</td>
+								<td>{$vo.gupdate_time|date="y-m-d H:m:i",###}</td>
+								<td>{$vo.gprice}</td>
+								<td>{$vo.gremark}</td>
+								<td>
+                                    <if condition="$vo['fstatus'] eq 0">
+                                    <a href="{:U('Food/foodDown',array('gid'=>$vo['gid']))}" title="下架">
+                                        <img src="__WEBPUBLIC__/Admin/images/icons/tick_circle.png" alt="Delete" />
+                                    </a>
+                                    <elseif condition="$vo['gstatus'] eq 1" />
+                                    <a href="{:U('Food/foodUp',array('gid'=>$vo['gid']))}" title="上架">
+                                        <img src="__WEBPUBLIC__/Admin/images/icons/cross_circle.png" alt="Delete" />
+                                    </a>
+                                    </if>
+                                </td>
+                                <td>
+                                    <a href="{:U('Goods/goodsEdit',array('id'=>$vo['gid']))}" title="编辑">
+                                        <img src="__WEBPUBLIC__/Admin/images/icons/pencil.png" alt="Edit" />
+                                    </a>
+                                    <a href="{:U('Goods/goodsDel',array('id'=>$vo['gid']))}" title="删除">
+                                        <img src="__WEBPUBLIC__/Admin/images/icons/cross.png" alt="Delete" />
+                                    </a>
+								</td>
+							</tr>
+						</volist>
+						<!--表尾-->
+						</tbody>
+						<tfoot>
+						<tr>
+							<td colspan="20">
+								<div class="bulk-actions align-left">
+									<input type="submit" value="批量删除" class="button"/>
+								</div>
+								<div class="pagination">
+									{$page}
+								</div>
+								<div class="clear"></div>
+							</td>
+						</tr>
+						</tfoot>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
