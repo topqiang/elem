@@ -9,12 +9,6 @@ class ShopController extends AdminBasicController{
 		
 	}
 
-	public function toppic(){
-		$list = D("Toppic") -> select();
-		$this -> assign("list",$list);
-		$this -> display();
-	}
-
 	public function shoplist(){
 		$shopadd = D("Shop");
 		$title = $_POST['title'];
@@ -89,7 +83,6 @@ class ShopController extends AdminBasicController{
 				'boss' => $_POST['boss'],
 				'tel' => $_POST['tel'],
 				'address' => $_POST['address'],
-				'logopic' => "Uploads/goods/".$upload_res['result'],
 				'createtime' => time(),
 				'updatetime' => time(),
 				'banknum' => $_POST['banknum'],
@@ -106,6 +99,52 @@ class ShopController extends AdminBasicController{
 		}
 	}
 
+
+	//输出当前轮播
+	public function manapic(){
+		$list = D("Toppic") -> select();
+		$this -> assign("list",$list);
+		$this -> display();
+	}
+
+
+	//64位上传图片
+	public function uploadshop(){
+		$pic = $_POST['pic'];
+		$picname = $_POST['picname'];
+		$id = $_POST['id'];
+		$base64 = substr(strstr($pic, ","), 1);
+		$data = base64_decode($base64);
+		$picsrc = "Uploads/toppic/".$picname;
+		$res = file_put_contents( $picsrc , $data);
+		if(isset($res)){
+			$da['picsrc'] = $picsrc;
+			if(!empty($id)){
+				$da['id'] = $id;
+				D("Toppic")->save($da);
+				$this->ajaxReturn($id);	
+			}else{
+				$id = D("Toppic")->add($da);
+				$this->ajaxReturn($id);	
+			}
+		}else{
+			$this->ajaxReturn("error");	
+		}
+	}
+
+	public function picdel(){
+		$id = $_GET['id'];
+		if (isset($id)) {
+			$res = D("Toppic")->delete($id);
+			if (isset($res)) {
+				$this -> success("删除成功！",U('Shop/manapic'));
+			}else{
+				$this->error("删除失败！",U('Shop/manapic'));
+			}
+		}else{
+			$this->error("删除失败！",U('Shop/manapic'));
+		}
+	}
 	/**
 	 * 处理商品图片上传
 	 */

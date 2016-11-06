@@ -1,0 +1,113 @@
+<include file="Public/header"/>
+    <body>
+    	<header class="bgz colb">
+    		<span class="left" linkto="javascript:history.go(-1)"></span>
+    		订单详情
+    	</header>
+    	<div class="content" style="padding: 50px 0px 20px;">
+	    	<div class="labtitle">物流信息</div>
+	    	<div class="lh45 bgb cole">
+	    		<div class="iconotime lh25 borb31 pad10">
+	    			<p>买家名称：{$order.addname}</p>
+	    			<p>联系电话：{$order.addtel}</p>
+	    			<p>地点：{$order.address}</p>
+	    		</div>
+	    		<div class="iconoinfo">送达时间：<span class="colz">2016.04.08 早06:30-09:30</span></div>
+	    	</div>
+	    	
+	    	<div class="labtitle" >订单详情</div>
+	    	
+	    	<div class="order bgb ovhid">
+		  		<div class="oname">
+		  			<span class="fr colr mar10">
+		  			<if condition="$order['type'] eq 0">
+	  					待付款
+	  				<elseif condition="$order['type'] eq 1"/>
+	  					待接单
+	  				<elseif condition="$order['type'] eq 2"/>
+	  					待配送
+	  				<elseif condition="$order['type'] eq 3"/>
+	  					待收货
+	  				<elseif condition="$order['type'] eq 4"/>
+	  					已完成
+	  				<elseif condition="$order['type'] eq 9"/>
+	  					已取消
+	  				</if>
+		  			</span>
+		  		</div>
+		  		<volist name="goods" id="good">
+		  		<div class="oinfo ovhid">
+		  			<div class="fl">
+		  				<img src="{$good.goodpic}" />
+		  			</div>
+		  			<div class="ginfo">
+		  				<div class="cole fs14">{$good.goodname}</div>
+		  				<div class="fs16">
+		  					<span class="cole fr">￥<?php echo ($good[price]*$good[num]) ?></span>
+		  					<span class="cole fr mar60">X{$good.num}</span>
+		  					<span class="colr">￥{$good.price}</span>
+		  				</div>
+		  			</div>
+		  		</div>
+		  		</volist>
+		  		<div class="fs14 lh45 pad0-10">
+		  			<span class="fr">实付：￥{$order.paymoney}</span>
+		  			<span class="fs16">合计：￥{$order.paymoney}</span>
+		  		</div>
+		  	</div>
+
+		  	<div class="orderline">
+		  		<div class="icontel" style="padding-left: 40px">
+		  			<a class="disb" href="tel:{$stel}">
+		  			<span class="fr pad0-10">
+		  				{$stel}
+		  			</span>
+		  			<span>联系卖家</span>
+		  			</a>
+		  		</div>
+		  	</div>
+	    	
+	    	<div class="labtitle">订单信息</div>
+	    	<div class="lh25 bgb pad10 fs12 cole">
+	    		<p>订单编号：{$order.ordname}</p>
+	    		<p>下单时间：{$order.createtime|date="y-m-d H:m:i",###}</p>
+	    		<p>支付方式：在线支付</p>
+	    	</div>
+    	</div>
+    	<div class="botarea bgb pad0-20">
+			<if condition="$order['type'] eq 0">
+	  			<span class="borbtnh fr mat10 fs12 mar10" ordid="{$order.id}" gotype="9">取消订单</span>
+	  			<span class="borbtnh fr mat10 fs12 mar10" ordid="{$order.id}" gotype="1">立即支付</span>
+	  		<elseif condition="$order['type'] eq 3"/>	
+	  			<span class="borbtnh fr mat10 fs12 mar10" ordid="{$order.id}" gotype="4">确认收货</span>
+	  		</if>
+    	</div>
+    </body>
+    <script type="text/javascript">
+    	$("[ordid]").on('click',function(){
+			var id = $(this).attr("ordid");
+			var type = $(this).attr("gotype");
+			if (id && type && id != "" && type != "") {
+				if (type == 1) {
+					window.location.href = "{:U('Order/updorder')}/id/"+id+"/type/1";
+				}else{
+					$.ajax({
+						"url" : "{:U('Order/updorder')}",
+						"type" : "post",
+						"data" : {"id" :id,"type":type},
+						"dataType" : "json",
+						"success" : function( res ){
+							var resjson = JSON.parse(res);
+							if (resjson.code == 1) {
+								alert(resjson.msg);
+								window.location.reload();
+							}else{
+								alert("修改失败！");
+							}				
+						}
+					});
+				}
+			}
+		});
+    </script>
+</html>

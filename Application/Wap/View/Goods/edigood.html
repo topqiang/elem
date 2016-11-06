@@ -1,0 +1,41 @@
+<include file="Public/header"/>
+    <body>
+    	<header class="bgz colb">
+    		<span class="left" linkto="javascript:history.go(-1);"></span>
+    		修改商品
+    	</header>
+		<div class="content" style="padding-top: 50px;">
+			<form action="{:U('Goods/edigood')}" method="post" name="form" enctype="multipart/form-data">
+				<div class="formline">
+					<div>
+						<span class="disib" style="width: 100px;">商品名：</span>
+						<input type="text" placeholder="请输入上传商品的名称" name="goodname" value="{$good.goodname}" />
+					</div>
+					<div>
+						<span class="disib" style="width: 100px;">商品描述：</span>
+						<input type="text" placeholder="请输入商品描述" name="gooddesc" value="{$good.gooddesc}" />
+					</div>
+					<div>
+						<span class="disib" style="width: 100px;">商品价格：</span>
+						<input type="number" placeholder="请输入商品价格" name="goodprice" value="{$good.price}" />
+						<input type="hidden" name="id" value="{$good.id}" />
+					</div>
+				</div>
+				<div class="pore bgb textcen">
+					<div class="upimgbag disib">
+		  				<img src="{$good.goodpic}" class="mar5"/>
+		  			</div>
+		  			<input type="file" class="poab selpstime" name="goodpic" />
+		  		</div>
+	  		</form>
+			<div class="big-btn bgbtn">确定</div>
+			<div class="lh50 textrig pad0-20 colr">{$msg}</div>
+		</div>
+    </body>
+	<script type="text/javascript" src="__WEBPUBLIC__/Home/js/touch.min.js"></script>
+	<script type="text/javascript">
+		$(".big-btn").on('click',function(){
+			document.form.submit();
+		});
+	</script>
+</html>`

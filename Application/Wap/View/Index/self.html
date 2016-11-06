@@ -1,120 +1,112 @@
 <include file="Public/header"/>
     <body>
 		<div class="content pore" style="padding-bottom: 20px;">
-		  	<div class="selftop bgz" style="height: 200px;">
+		  	<div class="selftop bgz" style="height: 150px;">
 		  		<div class="selftext">
 		  			<span class="rightb fr"></span>
 		  			<div class="disib fl pad0-20">
-			  			<img src="__WEBPUBLIC__/Wap/img/header.png" />
+			  			<img src="{$shopinfo.logopic}" />
 			  		</div>
 			  		<div class="menutext lh20 pad20">
-			  			<div class="colb">离不开早餐的萌萌</div>
-			  			<div class="colb fs12">150*****920</div>
+			  			<div class="colb">{$shopinfo.title}</div>
+			  			<div class="colb fs12">{$shopinfo.tel}</div>
 			  		</div>
 		  		</div>
 		  	</div>
 		  	<div class="intime disf iconvoline">
 		   		<div>
-		   			<div class="colr">66.00元</div>
+		   			<div class="colr">{$shopinfo.money}元</div>
 		   			<div class="cole">余额</div>
 		   		</div>
 		   		<div>
-		   			<div class="colg">100单</div>
+		   			<div class="colg">{$ordernum}单</div>
 		   			<div class="cole">单数</div>
 		   		</div>
 		   	</div>
 		  	
-		  	<div class="order mat10 bgb ovhid">
-		  		<div class="oname">
-		  			<span class="fr colr mar10">待付款</span>
-		  			<span class="pad0-20 bol5">掌上金城第一取货点</span>
-		  		</div>
-		  		<div class="oinfo ovhid">
-		  			<div class="fl">
-		  				<img src="__WEBPUBLIC__/Wap/img/hotel.png" />
-		  			</div>
-		  			<div class="ginfo">
-		  				<div class="">健康荷包蛋</div>
-		  				<div class="fs16">
-		  					<span class="cole fr">X1</span>
-		  					<span class="colr">￥69</span>
-		  				</div>
-		  			</div>
-		  		</div>
-		  		
-		  		<div class="oinfo ovhid">
-		  			<div class="fl">
-		  				<img src="__WEBPUBLIC__/Wap/img/hotel.png" />
-		  			</div>
-		  			<div class="ginfo">
-		  				<div class="">健康荷包蛋</div>
-		  				<div class="fs16">
-		  					<span class="cole fr">X1</span>
-		  					<span class="colr">￥69</span>
-		  				</div>
-		  			</div>
-		  		</div>
-		  		
-		  		<div class="oinfo ovhid">
-		  			<div class="fl">
-		  				<img src="__WEBPUBLIC__/Wap/img/hotel.png" />
-		  			</div>
-		  			<div class="ginfo">
-		  				<div class="">健康荷包蛋</div>
-		  				<div class="fs16">
-		  					<span class="cole fr">X1</span>
-		  					<span class="colr">￥69</span>
-		  				</div>
-		  			</div>
-		  		</div>
-		  		
-		  		<div class="fs14 lh45 borb31 mar10">
-		  			<span class="fr">共3件商品 合计：<span class="fs16">￥28.00</span></span>
-		  		</div>
-		  		
-		  		<div class="btnarea">
-		  			<span class="borbtnh fr mat10 fs12 mar10">立即付款</span>
-		  			<span class="borbtnh fr mat10 fs12 mar10">取消订单</span>
-		  		</div>
-		  	</div>
-		  	
-		  	<div class="order mat10 bgb ovhid">
-		  		<div class="oname">
-		  			<span class="fr colr mar10">待取货</span>
-		  			<span class="pad0-20 bol5">掌上金城第一取货点</span>
-		  		</div>
-		  		<div class="oinfo ovhid">
-		  			<div class="fl">
-		  				<img src="__WEBPUBLIC__/Wap/img/hotel.png" />
-		  			</div>
-		  			<div class="ginfo">
-		  				<div class="">健康荷包蛋</div>
-		  				<div class="fs16">
-		  					<span class="cole fr">X1</span>
-		  					<span class="colr">￥69</span>
-		  				</div>
-		  			</div>
-		  		</div>
-		  		
-		  		<div class="fs14 lh45 borb31 mar10">
-		  			<span class="fr">共3件商品 合计：<span class="fs16">￥28.00</span></span>
-		  		</div>
-		  		
-		  		<div class="btnarea">
-		  			<span class="borbtnh fr mat10 fs12 mar10">立即取货</span>
-		  		</div>
-		  	</div>
-		  	
-		  	
+
+		   	<volist name="ordinfo" id="order">
+		   		<div class="order mat10 bgb ovhid">
+			  		<div class="oname" linkto="{:U('Index/orderinfo')}/id/{$order.id}">
+			  			<span class="fr colr mar10">
+			  				<if condition="$order['type'] eq 0">
+			  					待付款
+			  				<elseif condition="$order['type'] eq 1"/>
+			  					待接单
+			  				<elseif condition="$order['type'] eq 2"/>
+			  					待配送
+			  				<elseif condition="$order['type'] eq 3"/>
+			  					待收货
+			  				<elseif condition="$order['type'] eq 4"/>
+			  					已完成
+			  				<elseif condition="$order['type'] eq 9"/>
+			  					已取消
+			  				</if>
+			  			</span>
+			  			<span class="pad0-20 bol5">{$order.address}</span>
+			  		</div>
+			  		<volist name="order['goods']" id="good" >
+			  		<div class="oinfo ovhid">
+			  			<div class="fl">
+			  				<img src="{$good.goodpic}" />
+			  			</div>
+			  			<div class="ginfo">
+			  				<div class="">{$good.goodname}</div>
+			  				<div class="fs16">
+			  					<span class="cole fr">X{$good.num}</span>
+			  					<span class="colr">￥{$good.price}</span>
+			  				</div>
+			  			</div>
+			  		</div>
+			  		</volist>
+			  		
+			  		<div class="fs14 lh45 borb31 mar10 textrig">
+			  			<span class="">共{$order.num}件商品 合计：<span class="fs16">￥{$order.paymoney}</span></span>
+			  		</div>
+			  		
+			  		<div class="btnarea">
+			  		<if condition="$order['type'] eq 0">
+			  			<span class="borbtnh fr mat10 fs12 mar10" ordid="{$order.id}" gotype="9">取消订单</span>
+			  		<elseif condition="$order['type'] eq 1"/>	
+			  			<span class="borbtnh fr mat10 fs12 mar10" ordid="{$order.id}" gotype="2">接单</span>
+			  		<elseif condition="$order['type'] eq 2"/>
+			  			<span class="borbtnh fr mat10 fs12 mar10" ordid="{$order.id}" gotype="3">配送</span>
+			  		</if>
+			  		</div>
+			  	</div>
+		   	</volist>
 		</div>
 		<footer>
 	   		<div class="on">
 	   			<span>订单</span>
 	   		</div>
-	   		<div>
+	   		<div linkto="{:U('Goods/goodlist')}">
 	   			<span>商品</span>
 	   		</div>
 		</footer>
     </body>
-	<script type="text/javascript" src="__WEBPUBLIC__/Wap/js/touch.min.js"></script>
+	<script type="text/javascript" src="__WEBPUBLIC__/Home/js/touch.min.js"></script>
+	<script type="text/javascript">
+		$("[ordid]").on('click',function(){
+			var id = $(this).attr("ordid");
+			var type = $(this).attr("gotype");
+			if (id && type && id != "" && type != "") {
+				$.ajax({
+					"url" : "{:U('Index/updorder')}",
+					"type" : "post",
+					"data" : {"id" :id,"type":type},
+					"dataType" : "json",
+					"success" : function( res ){
+						var resjson = JSON.parse(res);
+						if (resjson.code == 1) {
+							alert(resjson.msg);
+							window.location.reload();
+						}else{
+							alert("修改失败！");
+						}					
+					}
+				});
+			}
+		});
+	</script>
 </html>   

@@ -1,0 +1,51 @@
+<include file="Public/header"/>
+    <body>
+    	<header class="bgz colb">
+    		<span class="left" linkto="javascript:history.go(-1);"></span>
+    		添加商品
+    	</header>
+		<div class="content" style="padding-top: 50px;">
+			<form action="{:U('Goods/addgood')}" method="post" name="form" enctype="multipart/form-data">
+				<div class="formline">
+					<div>
+						<span class="disib" style="width: 100px;">商品名：</span>
+						<input type="text" placeholder="请输入上传商品的名称" name="goodname" />
+					</div>
+					<div>
+						<span class="disib" style="width: 100px;">商品描述：</span>
+						<input type="text" placeholder="请输入商品描述" name="gooddesc" />
+					</div><!-- 
+					<div class="pore">
+						<span class="right fr"></span>
+						<span class="disib" style="width: 100px;">卡类型：</span>
+						<span class="cole fs14" ele="bank">开户行</span>
+						<select class="poab selpstime" forele="bank">
+							<option>建行</option>
+							<option>招行</option>
+							<option>农行</option>
+							<option>民行</option>
+						</select>
+					</div> -->
+					<div>
+						<span class="disib" style="width: 100px;">商品价格：</span>
+						<input type="number" placeholder="请输入商品价格" name="goodprice" />
+					</div>
+				</div>
+				<div class="pore bgb textcen">
+					<div class="upimgbag disib">
+						<img src="__WEBPUBLIC__/Home/img/uploadfile.png" class="mar5"/>
+					</div>
+		  			<input type="file" class="poab selpstime" name="goodpic" />
+		  		</div>
+	  		</form>
+			<div class="big-btn bgbtn">确定</div>
+			<div class="lh50 textrig pad0-20 colr">{$msg}</div>
+		</div>
+    </body>
+	<script type="text/javascript" src="__WEBPUBLIC__/Home/js/touch.min.js"></script>
+	<script type="text/javascript">
+		$(".big-btn").on('click',function(){
+			document.form.submit();
+		});
+	</script>
+</html>

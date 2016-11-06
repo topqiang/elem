@@ -19,7 +19,7 @@
 			<div class="tab-content default-tab">
 				<volist name="list" id="vo">
 					<div>
-						<div><img src="{$vo.pic}" style="width:250px;height:170px" /></div>
+						<div><img src="{$vo.picsrc}" style="width:250px;height:170px" /></div>
 						<input class="text-input small-input" type="file" id="{$vo.id}" name="pic"/>
 						<a href="{:U('Shop/picdel',array('id'=>$vo['id']))}" title="删除">
                             <img src="__WEBPUBLIC__/Admin/images/icons/cross.png" alt="Delete" />

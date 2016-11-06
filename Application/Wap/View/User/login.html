@@ -13,12 +13,12 @@
 		   	</div>
 
 		   	<div class="big-btn bgbtn login">登陆</div>
-		   	<div class="mat20">
+		   	<div class="mat20 textrig">
 		   		<span class="colr msg"></span>
 		   	</div>
 		</div>
     </body>
-	<script type="text/javascript" src="__WEBPUBLIC__/Wap/js/touch.min.js"></script>
+	<script type="text/javascript" src="__WEBPUBLIC__/Home/js/touch.min.js"></script>
 	<script type="text/javascript">
     $(".login").on('click',function() {
         var username = $("#username").val();
@@ -32,9 +32,11 @@
                 success : function(res){
                 		var ajaxjson = JSON.parse(res);
                     if(ajaxjson.code == "1"){
-                    		window.location.href = "{:U(Index/goodlist)}";
+                        console.log(res);
+                        $(".msg").html(ajaxjson.msg);
+                    	window.location.href = "{:U('Index/self')}";
                     }else{
-                    		$(".msg").html(ajaxjson.msg);
+                    	$(".msg").html(ajaxjson.msg);
                     }
                 }
             });

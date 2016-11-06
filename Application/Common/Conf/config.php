@@ -19,7 +19,7 @@ return  array(
     'COOKIE_PREFIX'         => '',      // Cookie前缀 避免冲突
 
     /* 数据库设置 */
-    'DB_TYPE'               => 'mysql',     // 数据库类型
+    'DB_TYPE'               => 'mysqli',     // 数据库类型
     'DB_HOST'               => '127.0.0.1', // 服务器地址
     'DB_NAME'               => 'elem',          // 数据库名
     'DB_USER'               => 'root',      // 用户名
@@ -53,7 +53,7 @@ return  array(
     'ERROR_PAGE'            => '',	// 错误定向页面
     'SHOW_ERROR_MSG'        => true,    // 显示错误信息
     'TRACE_EXCEPTION'       => false,   // TRACE错误信息是否抛异常 针对trace方法
-    'SHOW_PAGE_TRACE'        =>true,
+    //'SHOW_PAGE_TRACE'        =>true, //显示日志追踪信息
 
     /* 日志设置 */
     'LOG_RECORD'            => false,   // 默认不记录日志

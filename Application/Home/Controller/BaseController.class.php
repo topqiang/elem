@@ -7,6 +7,7 @@ class BaseController extends Controller{
 		$this -> appid = "wx091dbcec9f34322f";
 		$this -> scret = "d4049d17f6780e6cee4f82870a4f3545";
 		if (!isset($user)) {
+			session("userid",1);
 			// $code = session('code');
 			// if (!isset($code)) {
 			// 	$redirect_uri = "http://www.happydaze.cn/index.php?s=/User/index";

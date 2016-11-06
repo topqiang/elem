@@ -35,4 +35,5 @@ class UserController extends Controller{
  		}
  		$this -> ajaxReturn(json_encode($ajax));
  	}
+
 }

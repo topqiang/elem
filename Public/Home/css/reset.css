@@ -502,10 +502,12 @@ footer > div span {
   background-size: 15px 15px;
 }
 .iconedi {
+  padding-left: 30px;
   background: url('../img/edit.png') 10px center no-repeat transparent;
-  background-size: 20px 20px;
+  background-size: 15px 15px;
 }
 .icondel {
+  padding-left: 30px;
   background: url('../img/del.png') 10px center no-repeat transparent;
   background-size: 15px 13px;
 }
@@ -960,10 +962,11 @@ footer > div span {
   background-size: 100% 100%;
 }
 .selftop .selftext {
-  padding-top: 80px;
+  padding-top: 35px;
 }
 .selftop .selftext img {
   width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 .selftop .selftext span {

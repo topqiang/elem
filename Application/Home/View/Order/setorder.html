@@ -1,0 +1,75 @@
+<include file="Public/header"/>
+    <body>
+    	<header class="bgz colb">
+    		<span class="left" linkto="javascript:history.go(-1)"></span>
+    		订单详情
+    	</header>
+    	<div class="content" style="padding: 50px 0px 10px;">
+    		<div class="ordaddress" linkto="{:U('Address/editadd')}/oid/{$order.id}">
+    			<span class="right fr" style="margin-top: 13px;"></span>
+    			<if condition="empty($order['addname']) || empty($order['address']) || empty($order['addtel'])">
+    				<div class="ediadd cole" style="line-height: 60px;">
+	    				请填写取货信息
+	    			</div>
+	    			<else/>
+	    			<div class="ediadd">
+	    				<div>
+	    					收货人：{$order.addname}
+	    					<span class="fr mar5">{$order.addtel}</span>
+	    				</div>
+	    				<div>收货地址：{$order.address}</div>
+	    			</div>
+    			</if>
+    		</div>
+    		<div class="getfootime bol5 mat10">
+		  		<div class="fr rcontent">
+		  			<span class="smbtn bge">今日</span>
+		  			<div>30分钟</div>
+		  		</div>
+		  		<div class="">
+		  			预计送达时间
+		  		</div>
+		  	</div>
+		  	<div class="orderline">
+		  		<div><span class="fr pad0-20 fs14 cole">在线支付</span>支付方式</div>
+		  	</div>
+		  	
+		  	<div class="mat10 bgb pad10">
+		  		<div class="pad0-10 bol5">订单详情</div>
+		  	</div>
+		  	
+	    	<div class="formline pad0-10">
+	    		<volist name="goods" id="good">
+	    			<div>{$good.goodname}<span class="fr">￥{$good.price}</span><span class="fr mar60">X{$good.num}</span></div>
+	    		</volist>
+	    	</div>
+	    	<div class="pad10 bgb textrig" style="border-top: 1px solid #E1E1E1;">
+	    		<span class="">待支付￥{$order.paymoney}</span>
+	    	</div>
+	    	<div class="formline pad0-10 mat10">
+				<div>备注</div>
+				<div class="cole fs12"><input type="text" class="width remark" name="remark" placeholder="您可以在这输入您的特殊要求！"></div>
+			</div>
+    	</div>
+    	
+    	<!--确认订单-->
+    	<div class="gley on" null="stop">
+		<div class="gleycon">
+			<font>待支付：￥<span class="money">{$order.paymoney}</span></font>
+		</div>
+		<div class="gleybtn pfr">
+			支付订单
+		</div>
+	</div>
+    </body>
+    <script type="text/javascript">
+    	$(".gleybtn").on('click',function(){
+    		var remark = $.trim($(".remark").val());
+    		if (remark != "") {
+    			window.location.href = "{:U('Order/updorder')}/id/{$order.id}/type/1/remark/"+remark;
+    		}else{
+    			window.location.href = "{:U('Order/updorder')}/id/{$order.id}/type/1";
+    		}
+    	});
+    </script>
+</html>

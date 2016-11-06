@@ -36,7 +36,7 @@ function getRootPath(){
     var pos=curWwwPath.indexOf(pathName);
     var localhostPaht=curWwwPath.substring(0,pos);
     var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
-    return(localhostPaht+projectName);
+    return(localhostPaht);
 }
 /**
  * @name check响应
@@ -82,7 +82,6 @@ function top_ingley(){
 	$(".gley .icongley").on('click',function(){
 		if($(this).parents('.gley').hasClass('on')){
 			$(".zhao").toggleClass('disn');
-			$(".zhcon").toggleClass('disn');
 		}
 	});
 }
